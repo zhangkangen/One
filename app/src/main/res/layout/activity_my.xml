@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MyActivity">
+
+    <!--<fragment-->
+    <!--android:name="com.example.one.fragments.MainFragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"-->
+    <!--tools:layout="@layout/fragment_main" />-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/frag_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/proBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:id="@+id/rg_main"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/homepage"
+
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/indivdua_btn_bg"
+            android:textColor="@color/rdo_txt_color"
+            android:button="@null" />
+
+        <RadioButton
+            android:textColor="@color/rdo_txt_color"
+            android:id="@+id/rb_article"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/indivdua_btn_bg"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:text="@string/article" />
+    </RadioGroup>
+</LinearLayout>
