@@ -1,7 +1,6 @@
 package com.example.one;
 
 import android.app.Application;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
@@ -9,16 +8,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.example.one.common.LruImageCache;
-import com.example.one.dto.HomePageDto;
-import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
-import com.nostra13.universalimageloader.utils.StorageUtils;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Administrator on 2015/1/10.

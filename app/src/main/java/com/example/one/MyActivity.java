@@ -1,7 +1,5 @@
 package com.example.one;
 
-import android.app.DownloadManager;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,41 +12,28 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.one.common.Constants;
-import com.example.one.dialog.CustomProgressDialog;
 import com.example.one.fragments.ContentFragment;
 import com.example.one.fragments.MainFragment;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.transform.ErrorListener;
 
-
-public class MyActivity extends FragmentActivity {
+public class MyActivity extends FragmentActivity{
 
     private Map<String, Object> map;
     private boolean isExit;
@@ -58,8 +43,7 @@ public class MyActivity extends FragmentActivity {
     private RadioButton rb_main;
     private RadioButton rb_article;
     private List<Integer> ids;
-    private ProgressBar progressBar;
-    private LinearLayout fragContainer;
+    private LinearLayout mainLayout;
 
     Handler handler = new Handler() {
         @Override
@@ -67,8 +51,6 @@ public class MyActivity extends FragmentActivity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 0:
-                    progressBar.setVisibility(View.GONE);
-                    fragContainer.setVisibility(View.VISIBLE);
                     if (radioGroup.getCheckedRadioButtonId() == -1) {
                         rb_main.setChecked(true);
                     } else {
@@ -77,8 +59,6 @@ public class MyActivity extends FragmentActivity {
                     Log.i("TAG", "radioButton id =" + radioGroup.getCheckedRadioButtonId());
                     break;
                 case 1:
-                    progressBar.setVisibility(View.GONE);
-                    fragContainer.setVisibility(View.VISIBLE);
                     radioGroup.setClickable(false);
                     displayToast("网络请求发生了错误", Toast.LENGTH_SHORT);
                     Log.i("TAG", "radioButton id =" + radioGroup.getCheckedRadioButtonId());
@@ -97,8 +77,8 @@ public class MyActivity extends FragmentActivity {
 
         radioGroup = (RadioGroup) findViewById(R.id.rg_main);
         rb_main = (RadioButton) findViewById(R.id.rb_main);
-        progressBar = (ProgressBar) findViewById(R.id.proBar);
-        fragContainer = (LinearLayout) findViewById(R.id.frag_container);
+        mainLayout = (LinearLayout)findViewById(R.id.mainLayout);
+
         getJSONByVolley(Constants.MAINURL);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -118,7 +98,7 @@ public class MyActivity extends FragmentActivity {
                     getJSONByVolley(Constants.MAINURL);
                 }
 
-                transaction.replace(R.id.frag_container, fragment);
+                transaction.replace(R.id.mainLayout, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -128,8 +108,6 @@ public class MyActivity extends FragmentActivity {
 
     private void getJSONByVolley(String url) {
         final Message msg = new Message();
-        fragContainer.setVisibility(View.GONE);
-        progressBar.setVisibility(View.VISIBLE);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
