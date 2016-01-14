@@ -130,7 +130,7 @@ public class MyActivity extends FragmentActivity{
                 });
 
 
-        AppApplication.getInstance().addToRequestQueue(jsonArrayRequest);
+        //AppApplication.getInstance().addToRequestQueue(jsonArrayRequest);
     }
 
     /**

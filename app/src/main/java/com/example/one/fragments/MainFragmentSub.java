@@ -18,10 +18,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
-import com.example.one.AppApplication;
 import com.example.one.R;
 import com.example.one.common.Constants;
-import com.example.one.common.LruImageCache;
 import com.example.one.dto.HomePageDto;
 import com.google.gson.Gson;
 
@@ -105,7 +103,7 @@ public class MainFragmentSub extends Fragment
                         Toast.makeText(getActivity().getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
                     }
                 });
-        AppApplication.getInstance().addToRequestQueue(jsonObjectRequest);
+        //AppApplication.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
     /**
@@ -122,14 +120,14 @@ public class MainFragmentSub extends Fragment
         String d = format.format(homePageDto.getPublishDate());
         Log.i("TAG",d);
 
-        LruImageCache lruImageCache = AppApplication.getInstance().getmLruImageCache();
+        //LruImageCache lruImageCache = AppApplication.getInstance().getmLruImageCache();
 
-        ImageLoader imageLoader = new ImageLoader(AppApplication.getInstance().getRequestQueue(),
-                lruImageCache);
+       // ImageLoader imageLoader = new ImageLoader(AppApplication.getInstance().getRequestQueue(),
+         //       lruImageCache);
 
         networkImageView.setDefaultImageResId(R.drawable.default_img_bg);
         networkImageView.setErrorImageResId(R.drawable.default_img_bg);
-        networkImageView.setImageUrl(homePageDto.getImgUrl(), imageLoader);
+       // networkImageView.setImageUrl(homePageDto.getImgUrl(), imageLoader);
     }
 
     @Override

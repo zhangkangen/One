@@ -16,7 +16,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.one.AppApplication;
 import com.example.one.R;
 import com.example.one.common.Constants;
 import com.example.one.dto.ArticleDto;
@@ -89,7 +88,7 @@ public class ContentFragmentSub extends Fragment implements SwipeRefreshLayout.O
                     }
                 });
 
-        AppApplication.getInstance().addToRequestQueue(jsonObjectRequest);
+        //AppApplication.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
     /**
